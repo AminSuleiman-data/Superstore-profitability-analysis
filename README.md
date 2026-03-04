@@ -147,19 +147,19 @@ Several products consistently generate **negative profit**, highlighting the nee
 
 ## Executive Performance Overview
 
-![Executive Dashboard](Images/Executive_dashboard.jpg)
+![Executive Dashboard](Images/Executive_dashboard..jpg)
 
 ---
 
 ## Category Performance Analysis
 
-![Category Analysis](Images/category_analysis.jpg)
+![Category Analysis](Images/category_analysis..jpg)
 
 ---
 
 ## Regional Performance Analysis
 
-![Regional Analysis](Images/regional_analysis.jpg)
+![Regional Analysis](Images/regional_analysis..jpg)
 
 ---
 
@@ -171,7 +171,7 @@ Several products consistently generate **negative profit**, highlighting the nee
 
 ## Customer Segment Analysis
 
-![Customer Analysis](Images/customer_analysis.jpg)
+![Customer Analysis](Images/customer_analysis..jpg)
 
 ---
 
@@ -200,7 +200,7 @@ A full presentation summarizing the analysis, insights, and business recommendat
 
 📥 Open the presentation:
 
-[Open Presentation](Presentation/superstore_anlaysis_presentation.pdf)
+[Open Presentation](Presentation/superstore_anlaysis_presentation..pdf)
 
 ---
 
