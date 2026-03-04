@@ -1,216 +1,377 @@
 # =========================================================
-# Superstore Sales Analysis
-# Author: Amin Suleiman
-# Project: Profit Margin Optimization & Discount Strategy Analysis
-# =========================================================
-
-
-# =========================================================
-# 1. Import Libraries
-# Purpose: Load required Python libraries
+# SECTION 1 — Import Libraries
 # =========================================================
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-# visualization style
-sns.set(style="whitegrid")
 
 # =========================================================
-# 2. Load Dataset
-# Purpose: Import dataset into pandas dataframe
+# SECTION 2 — Load Dataset
 # =========================================================
 
-df = pd.read_csv("superstore.csv")
-
-# preview data
+df = pd.read_csv("Downloads/Sample - Superstore.csv", encoding="latin1")
 df.head()
 
+
 # =========================================================
-# 3. Basic Dataset Inspection
-# Purpose: Understand dataset structure
+# SECTION 3 — Basic Data Inspection
 # =========================================================
 
-print("Dataset Shape:", df.shape)
+df.shape
+
+df.head
+
+df.columns
+
+df.info
 
 df.info()
 
-df.describe()
+df.dtypes
+
 
 # =========================================================
-# 4. Missing Values Check
-# Purpose: Identify missing data
-# =========================================================
-
-missing_values = df.isnull().sum()
-
-print("Missing Values:")
-print(missing_values)
-
-# =========================================================
-# 5. Data Type Conversion
-# Purpose: Ensure proper date formats
+# SECTION 4 — Date Conversion
 # =========================================================
 
 df['Order Date'] = pd.to_datetime(df['Order Date'])
 df['Ship Date'] = pd.to_datetime(df['Ship Date'])
 
+
 # =========================================================
-# 6. Feature Engineering
-# Purpose: Create additional useful columns
+# SECTION 5 — Overall Sales & Profit
 # =========================================================
+
+df[['Sales','Profit']].sum()
+
+
+# =========================================================
+# SECTION 6 — Year Analysis
+# =========================================================
+
+df['Order Date'].dt.year.unique()
 
 df['Year'] = df['Order Date'].dt.year
-df['Month'] = df['Order Date'].dt.month
-df['Profit Margin'] = df['Profit'] / df['Sales']
+
+sales_by_year = df.groupby('Year')['Sales'].sum()
+
+sales_by_year
+
+profit_by_year = df.groupby('Year')['Profit'].sum()
+
+profit_by_year
+
 
 # =========================================================
-# 7. Overall Business Performance
-# Purpose: Calculate total revenue and profit
+# SECTION 7 — Category Analysis
+# =========================================================
+
+top_categories = df.groupby('Category')['Sales'].sum().sort_values(ascending=False)
+
+top_categories
+
+profit_by_category = df.groupby('Category')['Profit'].sum().sort_values(ascending=False)
+
+profit_by_category
+
+
+# =========================================================
+# SECTION 8 — Regional Analysis
+# =========================================================
+
+sales_by_region = df.groupby('Region')['Sales'].sum().sort_values(ascending=False)
+
+sales_by_region
+
+profit_by_region = df.groupby('Region')['Profit'].sum().sort_values(ascending=False)
+
+profit_by_region
+
+
+# =========================================================
+# SECTION 9 — Sub Category Analysis
+# =========================================================
+
+top_products = df.groupby('Sub-Category')['Sales'].sum().sort_values(ascending=False)
+
+top_products
+
+profit_by_subcategory = df.groupby('Sub-Category')['Profit'].sum().sort_values(ascending=False)
+
+profit_by_subcategory
+
+
+# =========================================================
+# SECTION 10 — Discount Analysis
+# =========================================================
+
+df[['Discount','Profit']].corr()
+
+discount_by_category = df.groupby('Sub-Category')['Discount'].mean().sort_values(ascending=False)
+
+discount_by_category
+
+
+# =========================================================
+# SECTION 11 — Loss Category Investigation
+# =========================================================
+
+loss_products = df[df['Sub-Category'].isin(['Tables','Bookcases','Supplies'])]
+
+loss_products.groupby('Sub-Category')[['Sales','Profit','Discount']].mean()
+
+
+# =========================================================
+# SECTION 12 — Tables Loss by Region
+# =========================================================
+
+df[df['Sub-Category']=='Tables'].groupby('Region')['Profit'].sum()
+
+
+# =========================================================
+# SECTION 13 — Discount vs Profit
+# =========================================================
+
+df.groupby('Discount')['Profit'].mean().sort_index()
+
+
+# =========================================================
+# SECTION 14 — Loss Analysis by Region
+# =========================================================
+
+loss_products_region = df[df['Sub-Category'].isin(['Tables','Bookcases','Supplies'])]
+
+loss_products_region.groupby(['Sub-Category','Region'])['Profit'].sum()
+
+
+# =========================================================
+# SECTION 15 — Supplies Summary
+# =========================================================
+
+df[df['Sub-Category']=='Supplies'][['Sales','Profit']].describe()
+
+
+# =========================================================
+# SECTION 16 — City Sales
+# =========================================================
+
+top_cities = df.groupby('City')['Sales'].sum().sort_values(ascending=False).head(10)
+
+top_cities
+
+
+# =========================================================
+# SECTION 17 — City Profit
+# =========================================================
+
+top_profit_cities = df.groupby('City')['Profit'].sum().sort_values(ascending=False).head(10)
+
+top_profit_cities
+
+
+# =========================================================
+# SECTION 18 — Monthly Sales
+# =========================================================
+
+df['Month'] = df['Order Date'].dt.month
+
+monthly_sales = df.groupby('Month')['Sales'].sum()
+
+monthly_sales
+
+
+# =========================================================
+# SECTION 19 — Top Products
+# =========================================================
+
+top_products = df.groupby('Product Name')['Sales'].sum().sort_values(ascending=False).head(10)
+
+top_products
+
+
+# =========================================================
+# SECTION 20 — Segment Analysis
+# =========================================================
+
+segment_sales = df.groupby('Segment')['Sales'].sum().sort_values(ascending=False)
+
+segment_sales
+
+
+# =========================================================
+# SECTION 21 — Business Summary
 # =========================================================
 
 total_sales = df['Sales'].sum()
 total_profit = df['Profit'].sum()
+total_orders = df['Order ID'].nunique()
+profit_margin = total_profit / total_sales
 
-print("Total Sales:", total_sales)
-print("Total Profit:", total_profit)
+total_sales, total_profit, total_orders, profit_margin
 
-# =========================================================
-# 8. Monthly Sales Trend
-# Purpose: Identify seasonality patterns
-# =========================================================
-
-monthly_sales = df.groupby('Month')['Sales'].sum()
-
-plt.figure(figsize=(10,5))
-monthly_sales.plot(marker='o')
-plt.title("Monthly Sales Trend")
-plt.xlabel("Month")
-plt.ylabel("Sales")
-plt.show()
 
 # =========================================================
-# 9. Regional Performance Analysis
-# Purpose: Compare revenue and profit by region
+# SECTION 22 — Monthly Time Series
 # =========================================================
 
-region_performance = df.groupby('Region')[['Sales','Profit']].sum()
+monthly_sales = df.groupby(df['Order Date'].dt.to_period('M'))['Sales'].sum().reset_index()
 
-print(region_performance)
+monthly_sales
 
-region_performance.plot(kind='bar', figsize=(10,6))
-plt.title("Regional Sales and Profit")
-plt.show()
 
 # =========================================================
-# 10. Category Profitability Analysis
-# Purpose: Evaluate profit contribution by category
+# SECTION 23 — Dashboard Tables
 # =========================================================
 
-category_analysis = df.groupby('Category')[['Sales','Profit']].sum()
+sales_by_category = df.groupby('Category')['Sales'].sum().reset_index()
 
-print(category_analysis)
+sales_by_category
 
-category_analysis.plot(kind='bar', figsize=(10,6))
-plt.title("Category Performance")
-plt.show()
+sales_by_region = df.groupby('Region')['Sales'].sum().reset_index()
 
-# =========================================================
-# 11. Sub-Category Analysis
-# Purpose: Identify strong and weak product groups
-# =========================================================
+sales_by_region
 
-sub_category_analysis = df.groupby('Sub-Category')[['Sales','Profit']].sum().sort_values(by='Profit')
+sales_by_segment = df.groupby('Segment')['Sales'].sum().reset_index()
 
-print(sub_category_analysis)
+sales_by_segment
 
-# =========================================================
-# 12. Discount Impact Analysis
-# Purpose: Understand how discounts affect profitability
-# =========================================================
+top_cities = df.groupby('City')['Sales'].sum().sort_values(ascending=False).head(10).reset_index()
 
-discount_analysis = df.groupby('Discount')['Profit'].mean()
+top_products = df.groupby('Product Name')['Sales'].sum().sort_values(ascending=False).head(10).reset_index()
 
-print(discount_analysis)
+sales_by_category = df.groupby('Category')['Sales'].sum().reset_index()
+profit_by_category = df.groupby('Category')['Profit'].sum().reset_index()
 
-# =========================================================
-# 13. Correlation Analysis
-# Purpose: Identify statistical relationships
-# =========================================================
+sales_by_region = df.groupby('Region')['Sales'].sum().reset_index()
+profit_by_region = df.groupby('Region')['Profit'].sum().reset_index()
 
-correlation_matrix = df[['Sales','Profit','Discount','Quantity']].corr()
+sales_by_segment = df.groupby('Segment')['Sales'].sum().reset_index()
 
-print(correlation_matrix)
+top_cities = df.groupby('City')['Sales'].sum().sort_values(ascending=False).head(10).reset_index()
 
-plt.figure(figsize=(8,6))
-sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm")
-plt.title("Correlation Matrix")
-plt.show()
+top_products = df.groupby('Product Name')['Sales'].sum().sort_values(ascending=False).head(10).reset_index()
+
+monthly_sales = df.groupby(df['Order Date'].dt.to_period('M'))['Sales'].sum().reset_index()
+monthly_sales['Order Date'] = monthly_sales['Order Date'].astype(str)
+
 
 # =========================================================
-# 14. Discount vs Profit Relationship
-# Purpose: Visualize negative relationship
+# SECTION 24 — Export Tables
 # =========================================================
 
-plt.figure(figsize=(8,6))
-sns.scatterplot(x='Discount', y='Profit', data=df)
-plt.title("Discount vs Profit")
-plt.show()
+sales_by_category.to_csv('sales_by_category.csv', index=False)
+profit_by_category.to_csv('profit_by_category.csv', index=False)
+
+sales_by_region.to_csv('sales_by_region.csv', index=False)
+profit_by_region.to_csv('profit_by_region.csv', index=False)
+
+sales_by_segment.to_csv('sales_by_segment.csv', index=False)
+
+top_cities.to_csv('top_cities.csv', index=False)
+top_products.to_csv('top_products.csv', index=False)
+
+monthly_sales.to_csv('monthly_sales.csv', index=False)
+
 
 # =========================================================
-# 15. Product Level Profitability
-# Purpose: Detect high revenue but low profit products
+# SECTION 25 — File System Checks
 # =========================================================
 
-product_analysis = df.groupby('Product Name')[['Sales','Profit','Discount']].mean()
+import os
+os.listdir()
 
-loss_products = product_analysis.sort_values(by='Profit').head(10)
+import os
+os.getcwd()
 
-print(loss_products)
-
-# =========================================================
-# 16. Customer Segment Analysis
-# Purpose: Evaluate contribution by customer segments
-# =========================================================
-
-segment_analysis = df.groupby('Segment')[['Sales','Profit']].sum()
-
-print(segment_analysis)
-
-segment_analysis.plot(kind='bar', figsize=(10,6))
-plt.title("Customer Segment Performance")
-plt.show()
 
 # =========================================================
-# 17. City Level Sales Analysis
-# Purpose: Identify top performing cities
+# SECTION 26 — Orders Export
 # =========================================================
 
-city_sales = df.groupby('City')['Sales'].sum().sort_values(ascending=False)
+total_orders = df['Order ID'].nunique()
 
-print(city_sales.head(10))
+import pandas as pd
 
-# =========================================================
-# 18. High Discount Loss Detection
-# Purpose: Detect orders where discount > 30% causing losses
-# =========================================================
+total_orders_df = pd.DataFrame({
+    'Metric': ['Total Orders'],
+    'Value': [total_orders]
+})
 
-high_discount_losses = df[(df['Discount'] >= 0.30) & (df['Profit'] < 0)]
+total_orders_df.to_csv('total_orders.csv', index=False)
 
-print(high_discount_losses[['Product Name','Sales','Discount','Profit']].head())
+total_orders_df
 
-# =========================================================
-# 19. Profit Margin Distribution
-# Purpose: Understand margin distribution across orders
-# =========================================================
-
-plt.figure(figsize=(8,6))
-sns.histplot(df['Profit Margin'], bins=30)
-plt.title("Profit Margin Distribution")
-plt.show()
 
 # =========================================================
-# END OF ANALYSIS
+# SECTION 27 — Profit by Segment
 # =========================================================
+
+profit_by_segment = df.groupby('Segment')['Profit'].sum().reset_index()
+
+profit_by_segment
+
+
+# =========================================================
+# SECTION 28 — Reload Dataset
+# =========================================================
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("Downloads/Sample - Superstore.csv", encoding="latin1")
+
+
+# =========================================================
+# SECTION 29 — Loss Products Analysis
+# =========================================================
+
+loss_products = df[df['Profit'] < 0]
+
+loss_products_summary = loss_products.groupby('Product Name')['Profit'].sum().reset_index()
+
+loss_products_summary = loss_products_summary.sort_values(by='Profit')
+
+loss_products_summary.head(10)
+
+
+# =========================================================
+# SECTION 30 — Loss Products Alternative
+# =========================================================
+
+loss_products = df.groupby('Product Name')['Profit'].sum().reset_index()
+
+loss_products = loss_products[loss_products['Profit'] < 0]
+
+loss_products = loss_products.sort_values(by='Profit')
+
+loss_products
+
+
+# =========================================================
+# SECTION 31 — High Loss Products
+# =========================================================
+
+loss_products = df.groupby('Product Name')['Profit'].sum().reset_index()
+
+loss_products = loss_products[loss_products['Profit'] < -100]
+
+loss_products = loss_products.sort_values(by='Profit')
+
+loss_products
+
+
+# =========================================================
+# SECTION 32 — Export Loss Products
+# =========================================================
+
+loss_products.to_csv('loss_products.csv', index=False)
+
+
+# =========================================================
+# SECTION 33 — Top 10 Loss Products
+# =========================================================
+
+loss_products_top10 = loss_products.head(10)
+
+loss_products_top10.to_csv('loss_products.csv', index=False)
