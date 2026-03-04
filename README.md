@@ -200,7 +200,7 @@ A full presentation summarizing the analysis, insights, and business recommendat
 
 📥 Open the presentation:
 
-[Open Presentation](Presentation/superstore_analaysis_presentation..pdf)
+[Open Presentation](Presentation/superstore_analysis_presentation..pdf)
 
 ---
 
