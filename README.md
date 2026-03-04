@@ -185,8 +185,6 @@ Diversify growth strategies across regions to reduce reliance on a single high-p
 
 # 📊 Dashboard Visualizations
 
-The following dashboards summarize the key insights from the analysis.
-
 ## Executive Performance Overview
 
 ![Executive Dashboard](Images/Executive_dashboard.jpg)
@@ -223,7 +221,9 @@ All data preparation and analysis steps were performed using **Python**.
 
 📂 Python Script:
 
-`Notebooks/sales_analysis_project.py`
+➡️ **Open the Python file**
+
+[Open Python Script](Notebooks/sales_analysis_project.py)
 
 The script includes:
 
@@ -240,9 +240,9 @@ The script includes:
 
 A full presentation summarizing the analysis, key insights, and business recommendations is available below.
 
-📥 Open the presentation:
+📥 **Open the presentation**
 
-`Presentation/superstore_analysis_presentation.pdf`
+[Open Presentation](Presentation/superstore_analysis_presentation.pdf)
 
 ---
 
@@ -262,22 +262,24 @@ A full presentation summarizing the analysis, key insights, and business recomme
 
 # 📁 Project Structure
 
+```
 superstore-profitability-analysis
 
 README.md
 
-Images  
-Executive_dashboard.jpg  
-category_analysis.jpg  
-customer_analysis.jpg  
-product_analysis.jpg  
-regional_analysis.jpg  
+Images
+   Executive_dashboard.jpg
+   category_analysis.jpg
+   customer_analysis.jpg
+   product_analysis.jpg
+   regional_analysis.jpg
 
-Notebooks  
-sales_analysis_project.py  
+Notebooks
+   sales_analysis_project.py
 
-Presentation  
-superstore_analysis_presentation.pdf  
+Presentation
+   superstore_analysis_presentation.pdf
+```
 
 ---
 
