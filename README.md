@@ -35,13 +35,13 @@ Dataset Details:
 
 Main variables include:
 
-- Sales
-- Profit
-- Discount
-- Product category
-- Region
-- Customer segment
-- Order date
+- Sales  
+- Profit  
+- Discount  
+- Product category  
+- Region  
+- Customer segment  
+- Order date  
 
 ---
 
@@ -70,8 +70,6 @@ Example preparation steps:
 ## 2️⃣ Exploratory Data Analysis
 
 Multiple analyses were conducted to understand sales drivers and profitability patterns.
-
-Analysis areas included:
 
 ### Sales & Profit Overview
 
@@ -126,10 +124,10 @@ Statistical analysis confirmed a **negative correlation between discount levels 
 
 Key findings:
 
-- 0% Discount → Positive profit
-- 20% Discount → Reduced profit
-- 30%+ Discount → Frequent losses
-- 50% Discount → Severe profit erosion
+- 0% Discount → Positive profit  
+- 20% Discount → Reduced profit  
+- 30%+ Discount → Frequent losses  
+- 50% Discount → Severe profit erosion  
 
 This indicates that **aggressive discount strategies are eroding margins**.
 
@@ -147,8 +145,6 @@ This creates **geographic revenue concentration risk**.
 
 Several products consistently generate **negative profit**, highlighting the need for **SKU-level profitability monitoring**.
 
-In some cases, **high-revenue products also appear among the highest loss-making items**, showing that sales volume alone does not guarantee profitability.
-
 ---
 
 # 💡 Strategic Recommendations
@@ -157,25 +153,17 @@ In some cases, **high-revenue products also appear among the highest loss-making
 
 Cap discounts at **30% maximum** to prevent systematic margin erosion.
 
----
-
 ### 2️⃣ Improve Furniture Category Pricing
 
 Reprice products or renegotiate supplier costs to address the low margin performance of furniture items.
-
----
 
 ### 3️⃣ Monitor Product-Level Profitability
 
 Implement **SKU-level monitoring** to quickly identify loss-making products.
 
----
-
 ### 4️⃣ Align Sales Growth with Profitability
 
 Ensure that revenue growth strategies prioritize **margin sustainability**.
-
----
 
 ### 5️⃣ Reduce Regional Dependency
 
@@ -219,30 +207,28 @@ Diversify growth strategies across regions to reduce reliance on a single high-p
 
 All data preparation and analysis steps were performed using **Python**.
 
-📂 Python Script:
-
-➡️ **Open the Python file**
+📂 Open the Python script:
 
 [Open Python Script](Notebooks/sales_analysis_project.py)
 
 The script includes:
 
-- Data loading and validation
-- Feature engineering
-- Profitability analysis
-- Discount impact analysis
-- Product loss investigation
-- Data export for dashboard creation
+- Data loading and validation  
+- Feature engineering  
+- Profitability analysis  
+- Discount impact analysis  
+- Product loss investigation  
+- Data export for dashboard creation  
 
 ---
 
 # 📑 Project Presentation
 
-A full presentation summarizing the analysis, key insights, and business recommendations is available below.
+A full presentation summarizing the analysis, key insights, and business recommendations.
 
-📥 **Open the presentation**
+📥 Open the presentation:
 
-[Open Presentation](Presentation/superstore_analysis_presentation.pdf)
+[Open Presentation](Presentation/superstore_anlaysis_presentation.pdf)
 
 ---
 
@@ -262,24 +248,22 @@ A full presentation summarizing the analysis, key insights, and business recomme
 
 # 📁 Project Structure
 
-```
 superstore-profitability-analysis
 
 README.md
 
-Images
-   Executive_dashboard.jpg
-   category_analysis.jpg
-   customer_analysis.jpg
-   product_analysis.jpg
-   regional_analysis.jpg
+Images  
+Executive_dashboard.jpg  
+category_analysis.jpg  
+customer_analysis.jpg  
+product_analysis.jpg  
+regional_analysis.jpg  
 
-Notebooks
-   sales_analysis_project.py
+Notebooks  
+sales_analysis_project.py  
 
-Presentation
-   superstore_analysis_presentation.pdf
-```
+Presentation  
+superstore_anlaysis_presentation.pdf  
 
 ---
 
