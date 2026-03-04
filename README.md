@@ -35,13 +35,13 @@ Dataset Details:
 
 Main variables include:
 
-- Sales  
-- Profit  
-- Discount  
-- Product category  
-- Region  
-- Customer segment  
-- Order date  
+- Sales
+- Profit
+- Discount
+- Product category
+- Region
+- Customer segment
+- Order date
 
 ---
 
@@ -124,12 +124,10 @@ Statistical analysis confirmed a **negative correlation between discount levels 
 
 Key findings:
 
-- 0% Discount → Positive profit  
-- 20% Discount → Reduced profit  
-- 30%+ Discount → Frequent losses  
-- 50% Discount → Severe profit erosion  
-
-This indicates that **aggressive discount strategies are eroding margins**.
+- 0% Discount → Positive profit
+- 20% Discount → Reduced profit
+- 30%+ Discount → Frequent losses
+- 50% Discount → Severe profit erosion
 
 ---
 
@@ -137,37 +135,11 @@ This indicates that **aggressive discount strategies are eroding margins**.
 
 The **West region leads in both sales and profitability**, while other regions show weaker profit performance despite generating revenue.
 
-This creates **geographic revenue concentration risk**.
-
 ---
 
 ### Loss-Generating Products
 
 Several products consistently generate **negative profit**, highlighting the need for **SKU-level profitability monitoring**.
-
----
-
-# 💡 Strategic Recommendations
-
-### 1️⃣ Implement Discount Control Policies
-
-Cap discounts at **30% maximum** to prevent systematic margin erosion.
-
-### 2️⃣ Improve Furniture Category Pricing
-
-Reprice products or renegotiate supplier costs to address the low margin performance of furniture items.
-
-### 3️⃣ Monitor Product-Level Profitability
-
-Implement **SKU-level monitoring** to quickly identify loss-making products.
-
-### 4️⃣ Align Sales Growth with Profitability
-
-Ensure that revenue growth strategies prioritize **margin sustainability**.
-
-### 5️⃣ Reduce Regional Dependency
-
-Diversify growth strategies across regions to reduce reliance on a single high-performing market.
 
 ---
 
@@ -193,7 +165,7 @@ Diversify growth strategies across regions to reduce reliance on a single high-p
 
 ## Product Profitability Analysis
 
-![Product Analysis](Images/product_analysis.jpg)
+![Product Analysis](Images/product_analysis..jpg)
 
 ---
 
@@ -207,24 +179,24 @@ Diversify growth strategies across regions to reduce reliance on a single high-p
 
 All data preparation and analysis steps were performed using **Python**.
 
-📂 Open the Python script:
+📂 Open the Python Script:
 
 [Open Python Script](Notebooks/sales_analysis_project.py)
 
 The script includes:
 
-- Data loading and validation  
-- Feature engineering  
-- Profitability analysis  
-- Discount impact analysis  
-- Product loss investigation  
-- Data export for dashboard creation  
+- Data loading and validation
+- Feature engineering
+- Profitability analysis
+- Discount impact analysis
+- Product loss investigation
+- Data export for dashboard creation
 
 ---
 
 # 📑 Project Presentation
 
-A full presentation summarizing the analysis, key insights, and business recommendations.
+A full presentation summarizing the analysis, insights, and business recommendations.
 
 📥 Open the presentation:
 
@@ -236,7 +208,7 @@ A full presentation summarizing the analysis, key insights, and business recomme
 
 - Python (Pandas, NumPy)
 - Data Cleaning
-- Exploratory Data Analysis (EDA)
+- Exploratory Data Analysis
 - Business KPI Analysis
 - Profitability Analysis
 - Discount Strategy Evaluation
@@ -256,7 +228,7 @@ Images
 Executive_dashboard.jpg  
 category_analysis.jpg  
 customer_analysis.jpg  
-product_analysis.jpg  
+product_analysis..jpg  
 regional_analysis.jpg  
 
 Notebooks  
