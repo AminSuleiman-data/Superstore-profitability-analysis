@@ -1,10 +1,14 @@
 # 📊 Superstore Profitability & Discount Strategy Analysis
 
+**Tools Used:** Python | Pandas | NumPy | Power BI
+
 ## 📌 Project Overview
 
 This project analyzes sales performance, product profitability, and discount strategies using the **Superstore dataset** to uncover factors driving profit erosion and identify opportunities to improve margin performance.
 
 The analysis focuses on identifying **loss-generating products, discount impact on profitability, and regional performance differences** in order to recommend actionable business strategies.
+
+Python was used for data preparation and analysis, while **Power BI** was used to build the final business dashboard.
 
 ---
 
@@ -105,6 +109,23 @@ Multiple analyses were conducted to understand sales drivers and profitability p
 - Correlation between **Discount and Profit**
 - Average profit by discount level
 - Identification of **profit erosion caused by high discounts**
+
+---
+
+## 3️⃣ Dashboard Development (Power BI)
+
+The final executive dashboard was built using **Power BI** to visualize key insights from the analysis.
+
+The dashboard highlights:
+
+- Total Sales
+- Total Profit
+- Total Orders
+- Monthly Sales Trends
+- Category Performance
+- Regional Sales Distribution
+
+Power BI was used to create an interactive dashboard summarizing the most important business metrics and analytical insights.
 
 ---
 
@@ -212,9 +233,9 @@ A full presentation summarizing the analysis, insights, and business recommendat
 - Business KPI Analysis
 - Profitability Analysis
 - Discount Strategy Evaluation
+- Power BI Dashboard Development
 - Data Visualization
 - Data Storytelling
-- Dashboard Design
 
 ---
 
